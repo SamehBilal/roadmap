@@ -771,8 +771,9 @@
     stage.classList.toggle('built',!!sc.built);stage.classList.toggle('flowing',!!sc.flowing);
     sectors.forEach(s=>{const idx=+s.dataset.idx,on=idx<=shown;s.classList.toggle('revealed',on);
       const isNew=on&&idx===shown&&shown>prevShown&&sc.type==='map';s.classList.remove('pop');if(isNew){void s.offsetWidth;s.classList.add('pop');}});
+    const capSide=sc.side==='left'?'right':sc.side==='right'?'left':'center';
     document.querySelectorAll('.caption').forEach(c=>{const showIt=sc.type==='map'&&c.dataset.cap===sc.cap;
-      c.classList.remove('side-left','side-right','side-center');c.classList.add('side-'+(sc.side||'center'));c.classList.toggle('show',showIt);});
+      c.classList.remove('side-left','side-right','side-center');c.classList.add('side-'+capSide);c.classList.toggle('show',showIt);});
     document.querySelectorAll('.slide').forEach(s=>s.classList.toggle('active',isSlide&&s.dataset.slide===sc.slide));
     [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===scene));
     counter.textContent=String(scene+1).padStart(2,'0')+' / '+TOTAL;
