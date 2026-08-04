@@ -171,15 +171,11 @@
   .prof-head h4{font-size:17px}.prof-head p{font-size:12px;color:#b58c8d}
   .timeline{display:flex;flex-direction:column;gap:8px}
   .tl{background:#1e1011;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:9px 13px;font-size:13px;text-align:left;display:flex;gap:9px;align-items:center}.tl-i{font-size:16px}
-  .biz{flex-direction:column;padding:0}
-  .biz-nav{display:flex;align-items:center;gap:16px;padding:12px 18px;background:#1e1011;font-size:12px;color:#b58c8d;flex-wrap:wrap}
-  .biz-logo{font-weight:800;color:#fff;font-size:15px}.biz-logo b{color:var(--accent-2)}.biz-user{margin-left:auto;color:#fff}
-  .biz-hero{padding:26px 22px}.biz-hero h3{font-size:22px}.biz-hero p{color:#b58c8d;font-size:14px;margin-top:4px}
-  .biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 22px 22px}
-  .biz-tile{background:#1e1011;border:1px solid rgba(255,90,99,.18);border-radius:12px;padding:20px;text-align:center;font-size:30px;display:flex;flex-direction:column;gap:8px;align-items:center}
-  .biz-tile span{font-size:13px;color:#e8cccd}
-  .live-cta{display:inline-block;background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.4);border-radius:9px;padding:10px 16px;font-size:13px;font-weight:700;text-decoration:none;transition:.2s}
-  .live-cta:hover{background:rgba(74,222,128,.22)}
+  .live-embed{width:100%;height:56vh;min-height:400px;border:none;display:block;background:#fff}
+  .live-open{margin-left:auto;background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.4);border-radius:100px;padding:5px 13px;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap}
+  .live-open:hover{background:rgba(74,222,128,.22)}
+  .live-fallback{margin-top:12px;font-size:12px;color:#b58c8d;text-align:center}
+  .live-fallback a{color:var(--accent-2)}
   .kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px;max-width:1080px;width:100%}
   .kcol{background:#150b0c;border:1px solid rgba(255,90,99,.18);border-radius:12px;padding:14px}
   .kcol-h{font-size:13px;font-weight:700;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid rgba(255,90,99,.15)}
@@ -568,17 +564,12 @@
 
   <section class="slide demo" data-slide="platform">
     <span class="k">The Result</span><h2>From Pieces to a <span>Platform</span></h2>
-    <p class="lead">Every sector, one login, one profile, one business — the suggested AHWSuper home.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">ahwsuper.arabhardware.net</div></div>
-      <div class="demo-body biz">
-        <div class="biz-nav"><span class="biz-logo">AHW<b>Super</b></span><span>Media</span><span>Store</span><span>Events</span><span>Streaming</span><span>Ads</span><span>Social</span><span class="biz-user">👤 Ahmed</span></div>
-        <div class="biz-hero"><h3>Welcome back, Ahmed</h3><p>Everything Arab Hardware — tuned to you</p></div>
-        <div class="biz-grid">
-          <div class="biz-tile">📰<span>Your Feed</span></div><div class="biz-tile">🛒<span>Recommended</span></div>
-          <div class="biz-tile">🎫<span>Events for You</span></div><div class="biz-tile">📺<span>Live Now</span></div>
-          <div class="biz-tile">📣<span>Your Offers</span></div><div class="biz-tile">💬<span>Community</span></div></div>
-        <div style="padding:0 22px 24px"><a class="live-cta" href="https://business-cird4ht67-ahwdds-projects.vercel.app/" target="_blank" rel="noopener">Open the live AHWSuper prototype ↗</a></div>
-      </div></div>
+    <p class="lead">Every sector, one login, one profile, one business — the live AHWSuper home.</p>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">business-cird4ht67-ahwdds-projects.vercel.app</div>
+        <a class="live-open" href="https://business-cird4ht67-ahwdds-projects.vercel.app/" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" src="https://business-cird4ht67-ahwdds-projects.vercel.app/" loading="lazy" title="AHWSuper live platform"></iframe>
+    </div>
+    <p class="live-fallback">Live prototype embedded above &middot; if it doesn't load, <a href="https://business-cird4ht67-ahwdds-projects.vercel.app/" target="_blank" rel="noopener">open it in a new tab</a>.</p>
   </section>
 
   <section class="slide" data-slide="roadmap">
