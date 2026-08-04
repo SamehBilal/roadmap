@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events Auto-Registration — AHWSuper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .event-hero{display:flex;gap:16px;align-items:center;padding:16px 18px;background:var(--card-2);border-bottom:1px solid rgba(255,90,99,.15)}
+  .event-hero .ic{font-size:34px}
+  .event-hero h3{font-size:17px}.event-hero p{font-size:12px;color:var(--muted);margin-top:2px}
+  .confirmed{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.35);border-radius:9px;padding:14px;text-align:center;font-size:13.5px;color:#4ade80;display:none}
+  .confirmed.show{display:block}
+  .big-cta.done{background:#4ade80}
+</style>
+</head>
+<body data-page="events">
+<div class="ahw-page">
+  <div class="ahw-head">
+    <span class="k">Connected · Events</span>
+    <h1>🎫 <span>Events</span> that Suggest &amp; Auto-Fill</h1>
+    <p>Registration pulls straight from the unified profile — name, verified phone, even interests inferred from Media reads — so the form is <b>one tap</b>, not ten fields. Suggestions on the side come from Store, Streaming and Media.</p>
+  </div>
+
+  <div class="demo-frame">
+    <div class="event-hero">
+      <div class="ic">🎫</div>
+      <div><h3>Gaming Expo 2026 — Cairo</h3><p>Oct 14–15 &middot; Egypt International Exhibition Center</p></div>
+    </div>
+    <div class="browser-bar"><i></i><i></i><i></i><div class="url">events.arabhardware.net/gaming-expo-2026/register</div></div>
+    <div class="demo-body">
+      <div class="feed-col">
+        <div class="reg-head">One-tap register <span class="live">auto-filled</span></div>
+        <div class="reg-field"><label>Name</label><div class="reg-val">Ahmed Hassan <span class="src">from profile</span></div></div>
+        <div class="reg-field"><label>Phone</label><div class="reg-val">+20 10 •••• 214 <span class="src">verified via WhatsApp OTP</span></div></div>
+        <div class="reg-field"><label>Email</label><div class="reg-val">ahmed.h••••@gmail.com <span class="src">from profile</span></div></div>
+        <div class="reg-field"><label>Interests</label><div class="reg-val">GPUs · Streaming gear <span class="src">from Media reads</span></div></div>
+        <div class="reg-field"><label>Ticket type</label><div class="reg-val">Standard — Free <span class="src">suggested from past events</span></div></div>
+        <button class="big-cta" id="cta">Confirm registration</button>
+        <div class="confirmed" id="confirmed">✓ You're in — QR ticket sent to WhatsApp &amp; email. Calendar invite added.</div>
+      </div>
+      <div class="side-col">
+        <div class="mini-widget">
+          <div class="mw-title">You might also like</div>
+          <div class="sug">🛒 20% off the monitor still in your cart</div>
+          <div class="sug">📺 This event will be live-streamed — set a reminder</div>
+          <div class="sug">📰 Pre-event read: what to expect at the GPU hall</div>
+        </div>
+        <div class="mini-widget">
+          <div class="mw-title">Why this was easy</div>
+          <p class="mw-note">Every field above came from a sector Ahmed already uses. No new account, no retyping — the bridge did the work.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ahw-foot">Mock data for demo purposes &middot; Arab Hardware Ecosystem</div>
+</div>
+<script src="shared/nav.js"></script>
+<script>
+  const cta=document.getElementById('cta'),confirmed=document.getElementById('confirmed');
+  cta.addEventListener('click',()=>{
+    cta.textContent='✓ Registered';
+    cta.classList.add('done');
+    cta.disabled=true;
+    confirmed.classList.add('show');
+  });
+</script>
+</body>
+</html>

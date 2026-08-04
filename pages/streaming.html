@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Streaming — Smart Suggestions — AHWSuper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .player{position:relative}
+  .player .dot{width:8px;height:8px;border-radius:50%;background:#f11420;display:inline-block;margin-right:6px;animation:blink 1.4s infinite}
+  @keyframes blink{50%{opacity:.25}}
+  .chat{margin-top:12px;background:var(--card-2);border:1px solid var(--border);border-radius:11px;padding:12px 14px;height:110px;overflow:hidden;display:flex;flex-direction:column;gap:6px;font-size:11.5px}
+  .chat .msg b{color:var(--accent-soft)}
+</style>
+</head>
+<body data-page="streaming">
+<div class="ahw-page">
+  <div class="ahw-head">
+    <span class="k">Connected · Streaming</span>
+    <h1>📺 <span>Streaming</span> with Smart Suggestions</h1>
+    <p>Streams and videos recommend the products used on-screen, the write-up interview, and the next ticket — so the audience acts without ever leaving the player.</p>
+  </div>
+
+  <div class="demo-frame">
+    <div class="browser-bar"><i></i><i></i><i></i><div class="url">arabhardware.net/watch/grand-final</div></div>
+    <div class="demo-body">
+      <div class="feed-col">
+        <div class="player">▶ <span><span class="dot"></span>Live: Grand Final</span></div>
+        <div class="feed-head" style="margin-top:12px">👁️ <span id="viewers">22,431</span> watching</div>
+        <div class="chat" id="chat"></div>
+      </div>
+      <div class="side-col">
+        <div class="mini-widget">
+          <div class="mw-title">Suggested for viewers</div>
+          <div class="sug">🛒 Gear used in this match — keyboard &amp; headset</div>
+          <div class="sug">📰 Player interview: pre-match thoughts</div>
+          <div class="sug">🎫 Next live event — tickets open</div>
+          <div class="sug">📱 Clip &amp; share this moment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ahw-foot">Mock data for demo purposes &middot; Arab Hardware Ecosystem</div>
+</div>
+<script src="shared/nav.js"></script>
+<script>
+  const viewers=document.getElementById('viewers');
+  let n=22431;
+  setInterval(()=>{n+=Math.floor(Math.random()*40-15);viewers.textContent=n.toLocaleString();},2500);
+
+  const chat=document.getElementById('chat');
+  const msgs=[
+    ['Sara','let\'s goo 🔥'],['Omar','that clutch though'],['Nada','who\'s casting today?'],
+    ['Khaled','best final all season'],['Mona','gg either way'],['Yara','streaming quality is crisp'],
+  ];
+  let mi=0;
+  function addMsg(){
+    const [u,t]=msgs[mi%msgs.length];mi++;
+    const row=document.createElement('div');row.className='msg';row.innerHTML=`<b>${u}:</b> ${t}`;
+    chat.appendChild(row);
+    if(chat.children.length>6)chat.removeChild(chat.firstChild);
+    chat.scrollTop=chat.scrollHeight;
+  }
+  addMsg();setInterval(addMsg,2200);
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personalized Media Feed — AHWSuper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .switcher{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 18px}
+  .switcher button{
+    font-family:inherit;display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px 14px;border-radius:100px;cursor:pointer;
+    background:var(--card);border:1px solid var(--border);color:var(--ink);transition:.15s;
+  }
+  .switcher button .av{width:20px;height:20px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-size:9px;font-weight:800}
+  .switcher button.on,.switcher button:hover{border-color:var(--accent);background:rgba(241,20,32,.15)}
+  .switcher .why{font-size:11px;color:var(--muted)}
+  .feed-card{animation:fadein .35s ease}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body data-page="media">
+<div class="ahw-page">
+  <div class="ahw-head">
+    <span class="k">Connected · Media</span>
+    <h1>📰 <span>Media</span> that Knows the User</h1>
+    <p>Articles &amp; news auto-shift to match each user's interests, pulled live from their Store orders, Events attendance and Social follows — plus a personalized newsletter and an <b>Ask the Community</b> panel.</p>
+  </div>
+
+  <div class="switcher" id="switcher">
+    <button data-u="ahmed" class="on"><span class="av">AH</span> Ahmed &middot; <span class="why">bought a GPU, went to Expo</span></button>
+    <button data-u="sara"><span class="av">SM</span> Sara &middot; <span class="why">follows creators, watches streams</span></button>
+    <button data-u="omar"><span class="av">OM</span> Omar &middot; <span class="why">B2B buyer, reads enterprise gear</span></button>
+  </div>
+
+  <div class="demo-frame">
+    <div class="browser-bar"><i></i><i></i><i></i><div class="url">arabhardware.net · for you</div></div>
+    <div class="demo-body">
+      <div class="feed-col">
+        <div class="feed-head">For You <span class="live" id="who">personalized for Ahmed</span></div>
+        <div id="feedCards"></div>
+      </div>
+      <div class="side-col">
+        <div class="mini-widget">
+          <div class="mw-title">📨 Newsletter</div>
+          <div class="mw-row"><input placeholder="your@email.com" readonly><button>Subscribe</button></div>
+          <p class="mw-note" id="newsNote">Weekly picks based on what Ahmed reads &amp; buys</p>
+        </div>
+        <div class="mini-widget">
+          <div class="mw-title">💬 Ask the Community</div>
+          <div class="ask-q" id="askQ">&ldquo;Best mobo for a Ryzen build?&rdquo;</div>
+          <div class="ask-a" id="askA">14 answers &middot; 3 from AHW editors</div>
+          <button class="ask-btn">Ask a question</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ahw-foot">Feed rotates automatically to show the signal changing over time &middot; Mock data for demo purposes</div>
+</div>
+<script src="shared/nav.js"></script>
+<script>
+  const DATA={
+    ahmed:{
+      name:'Ahmed',
+      news:'Weekly picks based on what Ahmed reads & buys',
+      ask:['"Best mobo for a Ryzen build?"','14 answers · 3 from AHW editors'],
+      cards:[
+        {tag:'Because you bought a GPU',hot:1,title:'RTX 50-series: full review',sub:'Matched from your Store order'},
+        {tag:'You attended · Gaming Expo',title:'Highlights & winners',sub:'Matched from Events'},
+        {tag:'You follow on TikTok',title:'Top 5 budget phones',sub:'Matched from Social'},
+        {tag:'Trending in your library',title:'Best 165Hz monitors under 10K EGP',sub:'Matched from Store browsing'},
+      ]
+    },
+    sara:{
+      name:'Sara',
+      news:'Weekly picks based on the creators & streams Sara follows',
+      ask:['"Best mic for a streaming setup?"','9 answers · 2 from AHW editors'],
+      cards:[
+        {tag:'You watched · Grand Final',hot:1,title:'Behind the scenes: production setup',sub:'Matched from Streaming'},
+        {tag:'You follow 6 creators',title:'Creator gear guide: what the pros use',sub:'Matched from Social'},
+        {tag:'You liked 12 clips',title:'Top highlight reels this month',sub:'Matched from Streaming'},
+        {tag:'New in Library',title:'Ring lights & webcams compared',sub:'Matched from Media library'},
+      ]
+    },
+    omar:{
+      name:'Omar',
+      news:'Weekly picks based on Omar\'s B2B catalog activity',
+      ask:['"Bulk pricing for 50+ workstation units?"','6 answers · 4 from AHW editors'],
+      cards:[
+        {tag:'Because you quoted a B2B order',hot:1,title:'Enterprise workstation buying guide',sub:'Matched from Store B2B'},
+        {tag:'You attended · Partner Summit',title:'Vendor roadmap recap',sub:'Matched from Events'},
+        {tag:'Popular with B2B buyers',title:'Warranty & support: what changed this year',sub:'Matched from Store'},
+        {tag:'You read last month',title:'Networking gear for small offices',sub:'Matched from Media'},
+      ]
+    }
+  };
+  const feedCards=document.getElementById('feedCards'),who=document.getElementById('who'),
+        newsNote=document.getElementById('newsNote'),askQ=document.getElementById('askQ'),askA=document.getElementById('askA'),
+        switcher=document.getElementById('switcher');
+  function render(u){
+    const d=DATA[u];
+    who.textContent='personalized for '+d.name;
+    newsNote.textContent=d.news;
+    askQ.textContent=d.ask[0];askA.textContent=d.ask[1];
+    feedCards.innerHTML=d.cards.map(c=>
+      `<div class="feed-card${c.hot?' hot':''}"><div class="fc-tag">${c.tag}</div><h4>${c.title}</h4><p>${c.sub}</p></div>`
+    ).join('');
+  }
+  switcher.addEventListener('click',e=>{
+    const btn=e.target.closest('button');if(!btn)return;
+    [...switcher.children].forEach(b=>b.classList.toggle('on',b===btn));
+    render(btn.dataset.u);
+  });
+  render('ahmed');
+
+  let order=['ahmed','sara','omar'],i=0;
+  setInterval(()=>{
+    i=(i+1)%order.length;
+    const btn=switcher.children[i];
+    [...switcher.children].forEach(b=>b.classList.toggle('on',b===btn));
+    render(order[i]);
+  },7000);
+</script>
+</body>
+</html>

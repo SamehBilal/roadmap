@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Planner — AHWSuper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .chip-row span{cursor:pointer;transition:.15s;border:1px solid transparent}
+  .chip-row span.off{background:transparent;border-color:var(--border);color:var(--muted)}
+  .queue{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+  .qitem{background:var(--card-2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;display:flex;justify-content:space-between;gap:8px;animation:fadein .3s ease}
+  .qitem b{font-weight:600}
+  @keyframes fadein{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .schedule-btn{position:relative}
+</style>
+</head>
+<body data-page="social">
+<div class="ahw-page">
+  <div class="ahw-head">
+    <span class="k">Connected · Social</span>
+    <h1>📱 <span>Social</span> Fed by Our Own Data</h1>
+    <p>The internal planner suggests what to post next — best sellers, most-viewed reviews, top stream clips — pulled straight from Store, Media and Streaming. Pick platforms, schedule in one click.</p>
+  </div>
+
+  <div class="demo-frame">
+    <div class="browser-bar"><i></i><i></i><i></i><div class="url">ahwsuper.arabhardware.net/social/planner</div></div>
+    <div class="demo-body">
+      <div class="feed-col">
+        <div class="feed-head">Suggested posts <span class="live">auto-generated</span></div>
+        <div class="feed-card" data-post="0"><div class="fc-tag">🔥 Best seller this week</div><h4>&ldquo;RGB Mechanical Keyboard — back in stock&rdquo;</h4><p>Pulled from Store &middot; 1 click to schedule</p><button class="ask-btn" style="margin-top:8px;width:auto" data-schedule="0">Schedule this</button></div>
+        <div class="feed-card" data-post="1"><div class="fc-tag">👀 Most viewed review</div><h4>&ldquo;We tested 6 budget GPUs&rdquo;</h4><p>Pulled from Media &middot; 42k reads this month</p><button class="ask-btn" style="margin-top:8px;width:auto" data-schedule="1">Schedule this</button></div>
+        <div class="feed-card" data-post="2"><div class="fc-tag">🎥 Top stream clip</div><h4>&ldquo;Grand final — last play&rdquo;</h4><p>Pulled from Streaming &middot; 8.2k replays</p><button class="ask-btn" style="margin-top:8px;width:auto" data-schedule="2">Schedule this</button></div>
+        <div class="feed-card" data-post="3"><div class="fc-tag">🎫 Upcoming event</div><h4>&ldquo;Gaming Expo — 2 weeks out&rdquo;</h4><p>Pulled from Events &middot; registration still open</p><button class="ask-btn" style="margin-top:8px;width:auto" data-schedule="3">Schedule this</button></div>
+      </div>
+      <div class="side-col">
+        <div class="mini-widget">
+          <div class="mw-title">Post to</div>
+          <div class="chip-row" id="platforms">
+            <span class="on" data-p="Facebook">Facebook</span>
+            <span class="on" data-p="Instagram">Instagram</span>
+            <span class="on" data-p="TikTok">TikTok</span>
+            <span data-p="X">X</span>
+          </div>
+          <p class="mw-note">Toggle a platform to include or exclude it.</p>
+        </div>
+        <div class="mini-widget">
+          <div class="mw-title">Scheduled queue</div>
+          <div class="queue" id="queue"><p class="mw-note" id="emptyNote">Nothing queued yet — schedule a post from the left.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ahw-foot">Mock data for demo purposes &middot; Arab Hardware Ecosystem</div>
+</div>
+<script src="shared/nav.js"></script>
+<script>
+  const platforms=document.getElementById('platforms'),queue=document.getElementById('queue'),emptyNote=document.getElementById('emptyNote');
+  platforms.addEventListener('click',e=>{
+    const s=e.target.closest('span');if(!s)return;
+    s.classList.toggle('on');s.classList.toggle('off');
+  });
+  document.querySelectorAll('[data-schedule]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const title=btn.closest('.feed-card').querySelector('h4').textContent;
+      const chosen=[...platforms.querySelectorAll('span.on')].map(s=>s.dataset.p);
+      if(!chosen.length)return;
+      emptyNote.remove();
+      const item=document.createElement('div');
+      item.className='qitem';
+      item.innerHTML=`<span>${title}</span><b>${chosen.join(', ')}</b>`;
+      queue.prepend(item);
+      btn.textContent='✓ Scheduled';btn.disabled=true;
+    });
+  });
+</script>
+</body>
+</html>

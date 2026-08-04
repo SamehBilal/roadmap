@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store — Smart Suggestions — AHWSuper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .gallery{display:flex;gap:8px;margin-top:14px}
+  .gallery .shot-ph{flex:1;min-height:70px;font-size:10px}
+  .specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .specs span{background:var(--card-2);border:1px solid var(--border);border-radius:100px;padding:5px 12px;font-size:11px;color:var(--muted)}
+  .big-cta.added{background:#4ade80}
+  .qa{border-top:1px solid var(--border);padding-top:10px;margin-top:10px}
+  .qa .q{font-size:12.5px;font-style:italic}
+  .qa .a{font-size:11px;color:var(--muted);margin-top:3px}
+</style>
+</head>
+<body data-page="store">
+<div class="ahw-page">
+  <div class="ahw-head">
+    <span class="k">Connected · Store</span>
+    <h1>🛒 <span>Store</span> with Smart Suggestions</h1>
+    <p>Product pages surface the review that sold it, the setup video, the community thread and the event where people first saw it — everything the ecosystem already knows about this SKU, in one panel.</p>
+  </div>
+
+  <div class="demo-frame">
+    <div class="browser-bar"><i></i><i></i><i></i><div class="url">store.arabhardware.net/product/gaming-monitor-27-165hz</div></div>
+    <div class="demo-body">
+      <div class="feed-col">
+        <div class="prod">
+          <div class="prod-img">🖥️</div>
+          <div>
+            <h4>Gaming Monitor 27&Prime; 165Hz</h4>
+            <div class="price">EGP 8,900</div>
+            <button class="big-cta" id="addBtn">Add to cart</button>
+          </div>
+        </div>
+        <div class="specs">
+          <span>27&Prime; QHD</span><span>165Hz</span><span>1ms</span><span>HDR400</span><span>2× HDMI 2.1</span>
+        </div>
+        <div class="gallery">
+          <div class="shot-ph">Front shot</div>
+          <div class="shot-ph">Ports / side</div>
+          <div class="shot-ph">On desk</div>
+        </div>
+        <div class="qa">
+          <div class="q">&ldquo;Does it support VRR with a PS5?&rdquo;</div>
+          <div class="a">Yes — confirmed by 6 buyers &middot; answered in the community</div>
+        </div>
+      </div>
+      <div class="side-col">
+        <div class="mini-widget">
+          <div class="mw-title">From our ecosystem</div>
+          <div class="sug">📰 &ldquo;We reviewed this monitor&rdquo; &middot; 42k reads</div>
+          <div class="sug">📺 Setup &amp; calibration guide video</div>
+          <div class="sug">💬 18 community answers on this product</div>
+          <div class="sug">🎫 Seen at the Gaming Expo booth</div>
+        </div>
+        <div class="mini-widget">
+          <div class="mw-title">Bought together</div>
+          <div class="sug">🖱️ Wireless gaming mouse — EGP 1,450</div>
+          <div class="sug">🎧 Open-back headset — EGP 2,300</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ahw-foot">Mock data for demo purposes &middot; Arab Hardware Ecosystem</div>
+</div>
+<script src="shared/nav.js"></script>
+<script>
+  const addBtn=document.getElementById('addBtn');
+  addBtn.addEventListener('click',()=>{
+    addBtn.textContent='✓ Added to cart';
+    addBtn.classList.add('added');
+  });
+</script>
+</body>
+</html>

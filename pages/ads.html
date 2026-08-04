@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Planner — AHWSuper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .feed-card{cursor:pointer;transition:.15s}
+  .feed-card.picked{border-color:var(--accent);background:rgba(241,20,32,.1)}
+  .feed-card .pick-note{font-size:10.5px;color:#4ade80;margin-top:6px;display:none}
+  .feed-card.picked .pick-note{display:block}
+  .launch-summary{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.6}
+  .big-cta.launched{background:#4ade80}
+</style>
+</head>
+<body data-page="ads">
+<div class="ahw-page">
+  <div class="ahw-head">
+    <span class="k">Connected · Ads</span>
+    <h1>📣 <span>Ads</span> that Target by Behavior</h1>
+    <p>Audiences suggest themselves from real signals — what people read, bought, or attended — instead of a media buyer guessing segments from scratch.</p>
+  </div>
+
+  <div class="demo-frame">
+    <div class="browser-bar"><i></i><i></i><i></i><div class="url">ahwsuper.arabhardware.net/ads/planner</div></div>
+    <div class="demo-body">
+      <div class="feed-col">
+        <div class="feed-head">Suggested audiences <span class="live">from user data</span></div>
+        <div class="feed-card" data-a="0"><div class="fc-tag">2,300 users</div><h4>Read GPU reviews, didn't buy</h4><p>→ Retarget with a GPU banner</p><div class="pick-note">✓ Added to campaign</div></div>
+        <div class="feed-card" data-a="1"><div class="fc-tag">5,100 users</div><h4>Attended an event this year</h4><p>→ Email: next event early access</p><div class="pick-note">✓ Added to campaign</div></div>
+        <div class="feed-card" data-a="2"><div class="fc-tag">3,600 users</div><h4>Watched a stream, didn't follow socials</h4><p>→ Banner: follow us for more clips</p><div class="pick-note">✓ Added to campaign</div></div>
+        <div class="feed-card" data-a="3"><div class="fc-tag">1,150 users</div><h4>Abandoned a Store cart</h4><p>→ Email: 10% off, 48h only</p><div class="pick-note">✓ Added to campaign</div></div>
+      </div>
+      <div class="side-col">
+        <div class="mini-widget">
+          <div class="mw-title">Channels</div>
+          <div class="chip-row"><span>Banner</span><span>Email</span></div>
+          <button class="ask-btn" id="launch" style="width:100%">Launch campaign</button>
+          <div class="launch-summary" id="summary">Click an audience card, then launch.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ahw-foot">Mock data for demo purposes &middot; Arab Hardware Ecosystem</div>
+</div>
+<script src="shared/nav.js"></script>
+<script>
+  const cards=[...document.querySelectorAll('.feed-card[data-a]')],launch=document.getElementById('launch'),summary=document.getElementById('summary');
+  cards.forEach(c=>c.addEventListener('click',()=>{
+    c.classList.toggle('picked');
+    updateSummary();
+  }));
+  function updateSummary(){
+    const picked=cards.filter(c=>c.classList.contains('picked'));
+    if(!picked.length){summary.textContent='Click an audience card, then launch.';return;}
+    const total=picked.reduce((sum,c)=>sum+parseInt(c.querySelector('.fc-tag').textContent.replace(/\D/g,'')),0);
+    summary.textContent=`${picked.length} audience${picked.length>1?'s':''} selected · ~${total.toLocaleString()} users reachable`;
+  }
+  launch.addEventListener('click',()=>{
+    if(!cards.some(c=>c.classList.contains('picked')))return;
+    launch.textContent='✓ Campaign launched';
+    launch.classList.add('launched');
+    launch.disabled=true;
+  });
+</script>
+</body>
+</html>

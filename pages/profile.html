@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unified Profile — AHWSuper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .profile-shell{display:flex;gap:22px;flex-wrap:wrap;margin-top:6px}
+  .main-col{flex:1.7;min-width:320px;display:flex;flex-direction:column;gap:18px}
+  .aside-col{flex:1;min-width:280px;display:flex;flex-direction:column;gap:16px}
+  .id-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
+  .id-card .prof-head{margin-bottom:0}
+  .prof-av{font-size:20px}
+  .filter-row{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 4px}
+  .filter-row button{
+    font-family:inherit;font-size:11.5px;padding:6px 13px;border-radius:100px;cursor:pointer;
+    background:rgba(241,20,32,.12);border:1px solid rgba(255,90,99,.25);color:var(--accent-soft);transition:.15s;
+  }
+  .filter-row button.on,.filter-row button:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .timeline{gap:10px}
+  .tl{transition:opacity .2s,transform .2s}
+  .tl.hide{display:none}
+  .tl-when{margin-left:auto;font-size:11px;color:var(--muted);white-space:nowrap}
+  .sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .sector-card{background:var(--card-2);border:1px solid var(--border);border-radius:10px;padding:11px 13px;text-align:left}
+  .sector-card .n{font-size:18px;font-weight:800;color:var(--accent-2)}
+  .sector-card .l{font-size:11px;color:var(--muted);margin-top:1px;display:flex;gap:6px;align-items:center}
+  .consent-note{font-size:11.5px;color:var(--muted);line-height:1.6}
+</style>
+</head>
+<body data-page="profile">
+<div class="ahw-page">
+  <div class="ahw-head">
+    <span class="k">Connected · Users</span>
+    <h1>One <span>Profile</span>, Every Activity</h1>
+    <p>A single profile page showing everything a user did across all six sectors — reads, orders, tickets, streams, ads, and posts — unified behind one identity key (phone/email). This is the heart of the connected ecosystem: every other demo reads from and writes back to this record.</p>
+  </div>
+
+  <div class="profile-shell">
+    <div class="main-col">
+      <div class="id-card">
+        <div class="prof-head">
+          <div class="prof-av">AH</div>
+          <div>
+            <h4>Ahmed Hassan</h4>
+            <p>Member since Jan 2023 · Cairo, EG · 142 actions tracked</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-frame">
+        <div class="browser-bar"><i></i><i></i><i></i><div class="url">ahwsuper.arabhardware.net/profile/ahmed-hassan</div></div>
+        <div class="demo-body" style="flex-direction:column">
+          <div class="feed-head">Activity Timeline <span class="live">live &middot; all sectors</span></div>
+          <div class="filter-row" id="filters">
+            <button data-f="all" class="on">All</button>
+            <button data-f="media">📰 Media</button>
+            <button data-f="store">🛒 Store</button>
+            <button data-f="events">🎫 Events</button>
+            <button data-f="streaming">📺 Streaming</button>
+            <button data-f="ads">📣 Ads</button>
+            <button data-f="social">📱 Social</button>
+          </div>
+          <div class="timeline" id="timeline">
+            <div class="tl" data-s="media"><span class="tl-i">📰</span> Read &ldquo;RTX 50-series: full review&rdquo; <span class="tl-when">2d ago</span></div>
+            <div class="tl" data-s="store"><span class="tl-i">🛒</span> Ordered a 27&Prime; 165Hz gaming monitor <span class="tl-when">5d ago</span></div>
+            <div class="tl" data-s="events"><span class="tl-i">🎫</span> Attended Gaming Expo 2026, scanned at door <span class="tl-when">2w ago</span></div>
+            <div class="tl" data-s="streaming"><span class="tl-i">📺</span> Watched the grand-final live stream (48 min) <span class="tl-when">2w ago</span></div>
+            <div class="tl" data-s="ads"><span class="tl-i">📣</span> Clicked a GPU retargeting email <span class="tl-when">3w ago</span></div>
+            <div class="tl" data-s="social"><span class="tl-i">📱</span> Shared a review on X <span class="tl-when">1mo ago</span></div>
+            <div class="tl" data-s="media"><span class="tl-i">📰</span> Asked &ldquo;Best mobo for a Ryzen build?&rdquo; in the community <span class="tl-when">1mo ago</span></div>
+            <div class="tl" data-s="events"><span class="tl-i">🎫</span> Registered for CES Watch Party (online) <span class="tl-when">5wk ago</span></div>
+            <div class="tl" data-s="store"><span class="tl-i">🛒</span> Left a 5-star review on a mechanical keyboard <span class="tl-when">6wk ago</span></div>
+            <div class="tl" data-s="social"><span class="tl-i">📱</span> Followed AHW on TikTok <span class="tl-when">2mo ago</span></div>
+            <div class="tl" data-s="streaming"><span class="tl-i">📺</span> Subscribed to the YouTube channel <span class="tl-when">2mo ago</span></div>
+            <div class="tl" data-s="ads"><span class="tl-i">📣</span> Saw 14 banner impressions across Media <span class="tl-when">ongoing</span></div>
+            <div class="tl" data-s="media"><span class="tl-i">📰</span> Read &ldquo;Top 5 budget phones&rdquo; <span class="tl-when">2mo ago</span></div>
+            <div class="tl" data-s="store"><span class="tl-i">🛒</span> Created a Store account, verified via WhatsApp OTP <span class="tl-when">Jan 2023</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aside-col">
+      <div class="mini-widget">
+        <div class="mw-title">Unified across</div>
+        <div class="chip-row"><span>Media</span><span>Store</span><span>Events</span><span>Streaming</span><span>Ads</span><span>Social</span></div>
+        <p class="mw-note">One identity · one data layer</p>
+      </div>
+
+      <div class="mini-widget">
+        <div class="mw-title">Activity by sector</div>
+        <div class="sector-grid">
+          <div class="sector-card"><div class="n">38</div><div class="l">📰 Media reads</div></div>
+          <div class="sector-card"><div class="n">6</div><div class="l">🛒 Store orders</div></div>
+          <div class="sector-card"><div class="n">4</div><div class="l">🎫 Events attended</div></div>
+          <div class="sector-card"><div class="n">27</div><div class="l">📺 Streams watched</div></div>
+          <div class="sector-card"><div class="n">14</div><div class="l">📣 Ad interactions</div></div>
+          <div class="sector-card"><div class="n">53</div><div class="l">📱 Social touches</div></div>
+        </div>
+      </div>
+
+      <div class="mini-widget">
+        <div class="mw-title">Where this record lives today</div>
+        <p class="consent-note">Before the bridge, these six counts sit in six separate systems — the website DB, Zoho, the events tool, the streaming platform, the ad planner and each social dashboard — joined here by phone number as the shared key.</p>
+      </div>
+
+      <div class="mini-widget">
+        <div class="mw-title">Consent</div>
+        <p class="consent-note">Ahmed opted in to cross-sector personalization from his account settings. He can export or delete this profile at any time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ahw-foot">Mock data for demo purposes · Arab Hardware Ecosystem</div>
+</div>
+<script src="shared/nav.js"></script>
+<script>
+  const filters=document.getElementById('filters'),tl=[...document.querySelectorAll('#timeline .tl')];
+  filters.addEventListener('click',e=>{
+    const btn=e.target.closest('button');if(!btn)return;
+    [...filters.children].forEach(b=>b.classList.toggle('on',b===btn));
+    const f=btn.dataset.f;
+    tl.forEach(row=>row.classList.toggle('hide',f!=='all'&&row.dataset.s!==f));
+  });
+</script>
+</body>
+</html>
