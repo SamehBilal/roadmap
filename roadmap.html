@@ -35,7 +35,12 @@
 
   #core{transition:transform .8s ease}
   /*body[data-scene="2"] #core{transform:scale(1.06)}*/
-  #core-logo{opacity:0;transition:opacity .7s ease}
+  .core-clone{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.55);transform-origin:center;
+    transition:transform 1.05s cubic-bezier(.2,.85,.25,1),opacity .5s ease}
+  .core-clone.revealed{opacity:1;transform:translate(0,0) scale(1)}
+  .core-clone.pop{animation:popGlow .9s ease}
+  #stage.built .core-clone{opacity:0;transition:opacity .5s ease}
+  #core-logo{opacity:0;transition:opacity .7s ease .2s}
   #stage.built #core-logo{opacity:1}
 
   .sector{transition:transform 1.05s cubic-bezier(.2,.85,.25,1)}
@@ -223,6 +228,7 @@
       <circle class="pulse" cx="500" cy="300"/><circle class="pulse" cx="500" cy="300" style="animation-delay:1.5s"/>
       <g id="logoWrap">
         <g id="core"></g>
+        <g id="coreClones"></g>
         <g id="core-logo"><image href="https://arabhardware.net/theme-assets/images/logo.svg" xlink:href="https://arabhardware.net/theme-assets/images/logo.svg" preserveAspectRatio="xMidYMid meet"/></g>
         <g id="sectors"></g>
       </g>
@@ -674,7 +680,8 @@
     {id:6,name:'Social',   icon:'bxs-share-alt',  ang:38,  R:206,kind:'rect',x:57.3,y:58.9,w:11.6,h:15.5},
     {id:7,name:'Users',    icon:'bxs-user',       ang:8,   R:150,kind:'rect',x:57.3,y:27.9,w:11.6,h:15.5},
   ];
-  const layer=document.getElementById('sectors'), bridgesG=document.getElementById('bridges'), ring={};
+  const layer=document.getElementById('sectors'), bridgesG=document.getElementById('bridges'),
+        cloneLayer=document.getElementById('coreClones'), ring={};
   SECTORS.forEach((s,i)=>{
     let el,minX,minY,maxX,maxY;
     if(s.kind==='rect'){
@@ -691,6 +698,10 @@
     const cenX=(minX+maxX)/2,cenY=(minY+maxY)/2;
     const rad=s.ang*Math.PI/180,rx=500+s.R*Math.cos(rad),ry=300+s.R*Math.sin(rad);
     ring[i]=[rx,ry];
+    const cloneG=document.createElementNS(NS,'g');cloneG.setAttribute('class','core-clone');cloneG.setAttribute('data-idx',s.id);
+    cloneG.style.setProperty('--tx',(rx-cenX).toFixed(1)+'px');cloneG.style.setProperty('--ty',(ry-cenY).toFixed(1)+'px');
+    const cloneWrap=document.createElementNS(NS,'g');cloneWrap.setAttribute('filter','url(#soft)');cloneWrap.appendChild(el.cloneNode());cloneG.appendChild(cloneWrap);
+    cloneLayer.appendChild(cloneG);
     const g=document.createElementNS(NS,'g');g.setAttribute('class','sector');g.setAttribute('data-idx',s.id);
     g.style.setProperty('--tx',(rx-cenX).toFixed(1)+'px');g.style.setProperty('--ty',(ry-cenY).toFixed(1)+'px');
     const wrap=document.createElementNS(NS,'g');wrap.setAttribute('filter','url(#soft)');wrap.appendChild(el);g.appendChild(wrap);
@@ -776,7 +787,8 @@
   const TOTAL=SCENES.length;
   let scene=0,prevShown=0;
   const body=document.body,counter=document.getElementById('counter'),stage=document.getElementById('stage'),
-        dots=document.getElementById('dots'),hint=document.getElementById('hint'),sectors=[...document.querySelectorAll('.sector')];
+        dots=document.getElementById('dots'),hint=document.getElementById('hint'),sectors=[...document.querySelectorAll('.sector')],
+        coreClones=[...document.querySelectorAll('.core-clone')];
   for(let i=0;i<TOTAL;i++){const d=document.createElement('i');d.onclick=e=>{e.stopPropagation();go(i)};dots.appendChild(d);}
 
   function render(){
@@ -785,6 +797,8 @@
     body.classList.toggle('content',isSlide);
     stage.classList.toggle('built',!!sc.built);stage.classList.toggle('flowing',!!sc.flowing);
     sectors.forEach(s=>{const idx=+s.dataset.idx,on=idx<=shown;s.classList.toggle('revealed',on);
+      const isNew=on&&idx===shown&&shown>prevShown&&sc.type==='map';s.classList.remove('pop');if(isNew){void s.offsetWidth;s.classList.add('pop');}});
+    coreClones.forEach(s=>{const idx=+s.dataset.idx,on=idx<=shown;s.classList.toggle('revealed',on);
       const isNew=on&&idx===shown&&shown>prevShown&&sc.type==='map';s.classList.remove('pop');if(isNew){void s.offsetWidth;s.classList.add('pop');}});
     const capSide=sc.side==='left'?'right':sc.side==='right'?'left':'center';
     const capLate=/^s[2-7]$/.test(sc.cap||'');
