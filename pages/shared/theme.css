@@ -131,3 +131,11 @@ img.shot{width:100%;display:block;border-radius:10px}
 .ev-card .ago{font-size:9.5px;color:#7a5658;margin-inline-start:auto}
 .ev-card .view-btn{display:block;width:calc(100% - 26px);margin:11px 13px 13px;text-align:center;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:9px;font-size:11.5px;font-weight:700;cursor:pointer;text-decoration:none}
 @media (max-width:760px){.hub-shell{flex-direction:column}.hub-side{width:100%;display:flex;gap:4px;overflow-x:auto;border-inline-end:none;border-bottom:1px solid var(--border)}.hub-grid{grid-template-columns:1fr}}
+
+/* ---- live external embeds (iframe of a real deployed tool) ---- */
+.embed-frame{margin-top:10px;width:100%;background:#140b0c;border:1px solid rgba(255,90,99,.2);border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.live-open{margin-left:auto;background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.4);border-radius:100px;padding:5px 13px;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap}
+.live-open:hover{background:rgba(74,222,128,.22)}
+.live-embed{width:100%;height:70vh;min-height:480px;border:none;display:block;background:#fff}
+.live-fallback{margin-top:12px;font-size:12px;color:var(--muted);text-align:center}
+.live-fallback a{color:var(--accent-2)}
