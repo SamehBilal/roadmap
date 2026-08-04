@@ -10,6 +10,7 @@
     {id:'ads',       label:'Ads',       file:'ads.html'},
     {id:'streaming', label:'Streaming', file:'streaming.html'},
   ];
+  const PLATFORM_URL='https://business-cird4ht67-ahwdds-projects.vercel.app/';
   const current=document.body.dataset.page;
   const nav=document.createElement('div');
   nav.className='ahw-nav';
@@ -18,6 +19,7 @@
     '<span class="brand"><b>AHW</b>Super &middot; Connected Demos</span>'+
     '<div class="links">'+
       PAGES.map(p=>`<a href="${p.file}"${p.id===current?' class="on"':''}>${p.label}</a>`).join('')+
+      `<a href="${PLATFORM_URL}" target="_blank" rel="noopener" class="live">AHWSuper Platform ↗</a>`+
     '</div>';
   document.body.insertBefore(nav,document.body.firstChild);
 })();

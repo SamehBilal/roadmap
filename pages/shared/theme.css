@@ -34,6 +34,8 @@ a{color:inherit}
   color:var(--muted);text-decoration:none;transition:.2s;white-space:nowrap;
 }
 .ahw-nav .links a:hover,.ahw-nav .links a.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ahw-nav .links a.live{border-color:rgba(74,222,128,.4);color:#4ade80;margin-inline-start:6px}
+.ahw-nav .links a.live:hover{background:rgba(74,222,128,.15);border-color:#4ade80;color:#4ade80}
 .ahw-nav .back{font-size:12px;color:var(--accent-soft);text-decoration:none;white-space:nowrap}
 
 /* ---- page shell ---- */
