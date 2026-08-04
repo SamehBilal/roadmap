@@ -39,7 +39,6 @@
     transition:transform 1.05s cubic-bezier(.2,.85,.25,1),opacity .5s ease}
   .core-clone.revealed{opacity:1;transform:translate(0,0) scale(1)}
   .core-clone.pop{animation:popGlow .9s ease}
-  #stage.built .core-clone{opacity:0;transition:opacity .5s ease}
   #core-logo{opacity:0;transition:opacity .7s ease .2s}
   #stage.built #core-logo{opacity:1}
 
@@ -785,21 +784,21 @@
     {type:'slide',slide:'thanks'},
   ];
   const TOTAL=SCENES.length;
-  let scene=0,prevShown=0;
+  let scene=0,prevShown=0,wasBuilt=false;
   const body=document.body,counter=document.getElementById('counter'),stage=document.getElementById('stage'),
         dots=document.getElementById('dots'),hint=document.getElementById('hint'),sectors=[...document.querySelectorAll('.sector')],
         coreClones=[...document.querySelectorAll('.core-clone')];
   for(let i=0;i<TOTAL;i++){const d=document.createElement('i');d.onclick=e=>{e.stopPropagation();go(i)};dots.appendChild(d);}
 
   function render(){
-    const sc=SCENES[scene],shown=sc.shown??prevShown,isSlide=sc.type==='slide';
+    const sc=SCENES[scene],shown=sc.shown??prevShown,isSlide=sc.type==='slide',builtNow=!!sc.built;
     body.dataset.scene=scene;body.dataset.side=sc.side||'center';
     body.classList.toggle('content',isSlide);
-    stage.classList.toggle('built',!!sc.built);stage.classList.toggle('flowing',!!sc.flowing);
+    stage.classList.toggle('built',builtNow);stage.classList.toggle('flowing',!!sc.flowing);
     sectors.forEach(s=>{const idx=+s.dataset.idx,on=idx<=shown;s.classList.toggle('revealed',on);
       const isNew=on&&idx===shown&&shown>prevShown&&sc.type==='map';s.classList.remove('pop');if(isNew){void s.offsetWidth;s.classList.add('pop');}});
-    coreClones.forEach(s=>{const idx=+s.dataset.idx,on=idx<=shown;s.classList.toggle('revealed',on);
-      const isNew=on&&idx===shown&&shown>prevShown&&sc.type==='map';s.classList.remove('pop');if(isNew){void s.offsetWidth;s.classList.add('pop');}});
+    coreClones.forEach(s=>{s.classList.toggle('revealed',builtNow);
+      const isNew=builtNow&&!wasBuilt;s.classList.remove('pop');if(isNew){void s.offsetWidth;s.classList.add('pop');}});
     const capSide=sc.side==='left'?'right':sc.side==='right'?'left':'center';
     const capLate=/^s[2-7]$/.test(sc.cap||'');
     document.querySelectorAll('.caption').forEach(c=>{const showIt=sc.type==='map'&&c.dataset.cap===sc.cap;
@@ -809,7 +808,7 @@
     document.querySelectorAll('.slide').forEach(s=>s.classList.toggle('active',isSlide&&s.dataset.slide===sc.slide));
     [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===scene));
     counter.textContent=String(scene+1).padStart(2,'0')+' / '+TOTAL;
-    hint.style.opacity=scene===0?'.5':'0';prevShown=shown;
+    hint.style.opacity=scene===0?'.5':'0';prevShown=shown;wasBuilt=builtNow;
   }
   function go(i){scene=Math.max(0,Math.min(TOTAL-1,i));render();}
   const next=()=>go(scene+1),prev=()=>go(scene-1);
