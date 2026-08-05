@@ -162,33 +162,6 @@
 
   /* ===== PART 2: connected demos ===== */
   .demo-frame{margin-top:22px;width:100%;max-width:1080px;background:#140b0c;border:1px solid rgba(255,90,99,.2);border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.5)}
-  .demo-body{display:flex;gap:16px;padding:18px;min-height:330px}
-  .feed-col{flex:1.6;display:flex;flex-direction:column;gap:12px}
-  .side-col{flex:1;display:flex;flex-direction:column;gap:12px}
-  .feed-head,.reg-head{font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-  .live{font-size:10px;background:rgba(74,222,128,.15);color:#4ade80;padding:3px 9px;border-radius:100px;letter-spacing:.5px}
-  .feed-card{background:#1e1011;border:1px solid rgba(255,90,99,.18);border-radius:11px;padding:12px 14px;text-align:left}
-  .feed-card.hot{border-color:rgba(255,90,99,.5)}
-  .fc-tag{font-size:10.5px;color:var(--accent-soft);margin-bottom:5px}
-  .feed-card h4{font-size:14px;margin-bottom:3px}.feed-card p{font-size:11.5px;color:#b58c8d}
-  .mini-widget{background:#1e1011;border:1px solid rgba(255,90,99,.18);border-radius:11px;padding:13px 15px;text-align:left}
-  .mw-title{font-size:13px;font-weight:700;margin-bottom:9px}
-  .mw-row{display:flex;gap:6px}.mw-row input{flex:1;background:#0e0708;border:1px solid rgba(255,90,99,.2);border-radius:7px;padding:7px 10px;color:#e8cccd;font-size:12px}
-  .mw-row button,.ask-btn{background:var(--accent);color:#fff;border:none;border-radius:7px;padding:7px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
-  .mw-note{font-size:11px;color:#b58c8d;margin-top:8px}
-  .ask-q{font-size:13px;font-style:italic;color:#e8cccd;margin-bottom:5px}.ask-a{font-size:11px;color:#b58c8d;margin-bottom:10px}.ask-btn{width:100%}
-  .reg-field{background:#1e1011;border:1px solid rgba(255,90,99,.18);border-radius:9px;padding:9px 13px;text-align:left;margin-bottom:2px}
-  .reg-field label{font-size:10.5px;color:#b58c8d;display:block}.reg-val{font-size:14px}.src{font-size:10px;color:#4ade80;margin-left:6px}
-  .big-cta{background:var(--accent);color:#fff;border:none;border-radius:9px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;width:100%;font-family:inherit;margin-top:6px}
-  .sug{background:#1e1011;border:1px solid rgba(255,90,99,.15);border-radius:8px;padding:9px 12px;font-size:12px;margin-bottom:7px;text-align:left}
-  .chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.chip-row span{background:rgba(241,20,32,.15);border-radius:100px;padding:4px 11px;font-size:11px;color:var(--accent-soft)}
-  .prod{display:flex;gap:16px;align-items:center}.prod-img{width:100px;height:100px;background:#1e1011;border-radius:12px;display:grid;place-items:center;font-size:44px}
-  .price{font-size:18px;font-weight:800;color:var(--accent-2);margin-top:4px}
-  .player{background:#000;border-radius:11px;height:200px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:20px;color:#fff}.player span{font-size:15px}
-  .prof-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}.prof-av{width:54px;height:54px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-weight:800;font-size:18px}
-  .prof-head h4{font-size:17px}.prof-head p{font-size:12px;color:#b58c8d}
-  .timeline{display:flex;flex-direction:column;gap:8px}
-  .tl{background:#1e1011;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:9px 13px;font-size:13px;text-align:left;display:flex;gap:9px;align-items:center}.tl-i{font-size:16px}
   .live-embed{width:100%;height:56vh;min-height:400px;border:none;display:block;background:#fff}
   .live-open{margin-left:auto;background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.4);border-radius:100px;padding:5px 13px;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap}
   .live-open:hover{background:rgba(74,222,128,.22)}
@@ -488,92 +461,58 @@
   <section class="slide demo" data-slide="c1">
     <span class="k">Connected · Media</span><h2><i class='bx bxs-news'></i> <span>Media</span> that Knows the User</h2>
     <p class="lead">Articles &amp; news auto-shift to match each user's interests from across the ecosystem — plus a new newsletter and an <b>Ask</b> community.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">arabhardware.net · for you</div></div>
-      <div class="demo-body">
-        <div class="feed-col"><div class="feed-head">For You <span class="live">personalized</span></div>
-          <div class="feed-card hot"><div class="fc-tag">Because you bought a GPU</div><h4>RTX 50-series: full review</h4><p>Matched from your Store order</p></div>
-          <div class="feed-card"><div class="fc-tag">You attended · Gaming Expo</div><h4>Highlights &amp; winners</h4><p>Matched from Events</p></div>
-          <div class="feed-card"><div class="fc-tag">You follow on TikTok</div><h4>Top 5 budget phones</h4><p>Matched from Social</p></div></div>
-        <div class="side-col">
-          <div class="mini-widget"><div class="mw-title">📨 Newsletter</div><div class="mw-row"><input placeholder="your@email.com" readonly><button>Subscribe</button></div><p class="mw-note">Weekly picks based on what you read &amp; buy</p></div>
-          <div class="mini-widget"><div class="mw-title">💬 Ask the Community</div><div class="ask-q">"Best mobo for a Ryzen build?"</div><div class="ask-a">14 answers · 3 from AHW editors</div><button class="ask-btn">Ask a question</button></div></div>
-      </div></div>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">pages/media-feed.html</div>
+        <a class="live-open" href="pages/media-feed.html" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" data-src="pages/media-feed.html" loading="lazy" title="Media demo"></iframe>
+    </div>
   </section>
   <section class="slide demo" data-slide="c2">
     <span class="k">Connected · Events</span><h2><i class='bx bxs-coupon'></i> <span>Events</span> that Suggest &amp; Auto-Fill</h2>
     <p class="lead">Events pull suggestions from other sectors, with <b>auto-registration</b> and <b>auto-customized forms</b> — the user barely types.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">events.arabhardware.net · register</div></div>
-      <div class="demo-body">
-        <div class="feed-col"><div class="reg-head">One-tap register <span class="live">auto-filled</span></div>
-          <div class="reg-field"><label>Name</label><div class="reg-val">Ahmed Hassan <span class="src">from profile</span></div></div>
-          <div class="reg-field"><label>Phone</label><div class="reg-val">+20 1• ••• ••• <span class="src">from Store order</span></div></div>
-          <div class="reg-field"><label>Interests</label><div class="reg-val">GPUs · Streaming <span class="src">from Media reads</span></div></div>
-          <button class="big-cta">Confirm registration</button></div>
-        <div class="side-col"><div class="mini-widget"><div class="mw-title">You might also like</div>
-          <div class="sug"><i class='bx bxs-cart'></i> 20% off your cart item</div><div class="sug"><i class='bx bxs-tv'></i> Live stream of this event</div><div class="sug"><i class='bx bxs-news'></i> Pre-event read: what to expect</div></div></div>
-      </div></div>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">pages/events.html</div>
+        <a class="live-open" href="pages/events.html" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" data-src="pages/events.html" loading="lazy" title="Events demo"></iframe>
+    </div>
   </section>
   <section class="slide demo" data-slide="c3">
     <span class="k">Connected · Social</span><h2><i class='bx bxs-share-alt'></i> <span>Social</span> Fed by Our Own Data</h2>
     <p class="lead">Our internal dashboard suggests what to post — best sellers, most-viewed content — straight from the ecosystem.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">ahwsuper · social planner</div></div>
-      <div class="demo-body">
-        <div class="feed-col"><div class="feed-head">Suggested posts <span class="live">auto-generated</span></div>
-          <div class="feed-card"><div class="fc-tag">🔥 Best seller this week</div><h4>"RGB Mechanical Keyboard — back in stock"</h4><p>Pulled from Store · 1 click to schedule</p></div>
-          <div class="feed-card"><div class="fc-tag">👀 Most viewed review</div><h4>"We tested 6 budget GPUs"</h4><p>Pulled from Media</p></div>
-          <div class="feed-card"><div class="fc-tag">🎥 Top stream clip</div><h4>"Grand final last play"</h4><p>Pulled from Streaming</p></div></div>
-        <div class="side-col"><div class="mini-widget"><div class="mw-title">Post to</div>
-          <div class="chip-row"><span>Facebook</span><span>Instagram</span><span>TikTok</span><span>X</span></div><button class="ask-btn">Schedule all</button></div></div>
-      </div></div>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">pages/social.html</div>
+        <a class="live-open" href="pages/social.html" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" data-src="pages/social.html" loading="lazy" title="Social demo"></iframe>
+    </div>
   </section>
   <section class="slide demo" data-slide="c4">
     <span class="k">Connected · Store</span><h2><i class='bx bxs-cart'></i> <span>Store</span> with Smart Suggestions</h2>
     <p class="lead">Product pages surface the most-viewed reviews, related posts and content that sell the item.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">ahw.store · product</div></div>
-      <div class="demo-body">
-        <div class="feed-col"><div class="prod"><div class="prod-img">🖥️</div><div><h4>Gaming Monitor 27" 165Hz</h4><div class="price">EGP 8,900</div><button class="big-cta">Add to cart</button></div></div></div>
-        <div class="side-col"><div class="mini-widget"><div class="mw-title">From our ecosystem</div>
-          <div class="sug"><i class='bx bxs-news'></i> "We reviewed this monitor" · 42k reads</div><div class="sug"><i class='bx bxs-tv'></i> Setup guide video</div><div class="sug">💬 18 community answers</div><div class="sug"><i class='bx bxs-coupon'></i> Seen at Gaming Expo booth</div></div></div>
-      </div></div>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">pages/store.html</div>
+        <a class="live-open" href="pages/store.html" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" data-src="pages/store.html" loading="lazy" title="Store demo"></iframe>
+    </div>
   </section>
   <section class="slide demo" data-slide="c5">
     <span class="k">Connected · Ads</span><h2><i class='bx bxs-megaphone'></i> <span>Ads</span> that Target by Behavior</h2>
     <p class="lead">Placements suggest themselves from real user signals — what they read, bought, watched.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">ahwsuper · ad planner</div></div>
-      <div class="demo-body">
-        <div class="feed-col"><div class="feed-head">Suggested audiences <span class="live">from user data</span></div>
-          <div class="feed-card"><div class="fc-tag">2,300 users</div><h4>Read GPU reviews, didn't buy</h4><p>→ Retarget with GPU banner</p></div>
-          <div class="feed-card"><div class="fc-tag">5,100 users</div><h4>Attended an event this year</h4><p>→ Email: next event early access</p></div></div>
-        <div class="side-col"><div class="mini-widget"><div class="mw-title">Channels</div><div class="chip-row"><span>Banner</span><span>Email</span></div><button class="ask-btn">Launch campaign</button></div></div>
-      </div></div>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">pages/ads.html</div>
+        <a class="live-open" href="pages/ads.html" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" data-src="pages/ads.html" loading="lazy" title="Ads demo"></iframe>
+    </div>
   </section>
   <section class="slide demo" data-slide="c6">
     <span class="k">Connected · Streaming</span><h2><i class='bx bxs-tv'></i> <span>Streaming</span> with Smart Suggestions</h2>
     <p class="lead">Streams and videos recommend related products, reviews and events — the audience acts without leaving.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">arabhardware.net · watch</div></div>
-      <div class="demo-body">
-        <div class="feed-col"><div class="player">▶ <span>Live: Grand Final</span></div><div class="feed-head" style="margin-top:12px">22,431 watching</div></div>
-        <div class="side-col"><div class="mini-widget"><div class="mw-title">Suggested for viewers</div>
-          <div class="sug"><i class='bx bxs-cart'></i> Gear used in this match</div><div class="sug"><i class='bx bxs-news'></i> Player interview</div><div class="sug"><i class='bx bxs-coupon'></i> Next live event tickets</div></div></div>
-      </div></div>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">pages/streaming.html</div>
+        <a class="live-open" href="pages/streaming.html" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" data-src="pages/streaming.html" loading="lazy" title="Streaming demo"></iframe>
+    </div>
   </section>
   <section class="slide demo" data-slide="c7">
     <span class="k">Connected · Users</span><h2><i class='bx bxs-user'></i> One <span>Profile</span>, Every Activity</h2>
     <p class="lead">A single profile page showing everything a user did across all six sectors — the heart of the connected ecosystem.</p>
-    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">ahwsuper · profile</div></div>
-      <div class="demo-body">
-        <div class="feed-col"><div class="prof-head"><div class="prof-av">AH</div><div><h4>Ahmed Hassan</h4><p>Member since 2023 · 142 actions tracked</p></div></div>
-          <div class="timeline">
-            <div class="tl"><span class="tl-i"><i class='bx bxs-news'></i></span> Read "RTX 50 review" · 2d ago</div>
-            <div class="tl"><span class="tl-i"><i class='bx bxs-cart'></i></span> Ordered a gaming monitor · 5d ago</div>
-            <div class="tl"><span class="tl-i"><i class='bx bxs-coupon'></i></span> Attended Gaming Expo · 2w ago</div>
-            <div class="tl"><span class="tl-i"><i class='bx bxs-tv'></i></span> Watched grand final · 2w ago</div>
-            <div class="tl"><span class="tl-i"><i class='bx bxs-megaphone'></i></span> Clicked GPU email · 3w ago</div>
-            <div class="tl"><span class="tl-i"><i class='bx bxs-share-alt'></i></span> Shared a review on X · 1mo ago</div></div></div>
-        <div class="side-col"><div class="mini-widget"><div class="mw-title">Unified across</div>
-          <div class="chip-row"><span>Media</span><span>Store</span><span>Events</span><span>Streaming</span><span>Ads</span><span>Social</span></div>
-          <p class="mw-note">One identity · one data layer</p></div></div>
-      </div></div>
+    <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">pages/profile.html</div>
+        <a class="live-open" href="pages/profile.html" target="_blank" rel="noopener">Open ↗</a></div>
+      <iframe class="live-embed" data-src="pages/profile.html" loading="lazy" title="Profile demo"></iframe>
+    </div>
   </section>
 
   <section class="slide demo" data-slide="platform">
@@ -581,7 +520,7 @@
     <p class="lead">Every sector, one login, one profile, one business — the live AHWSuper home.</p>
     <div class="demo-frame"><div class="browser-bar"><i></i><i></i><i></i><div class="url">business-cird4ht67-ahwdds-projects.vercel.app</div>
         <a class="live-open" href="https://business-cird4ht67-ahwdds-projects.vercel.app/" target="_blank" rel="noopener">Open ↗</a></div>
-      <iframe class="live-embed" src="https://business-cird4ht67-ahwdds-projects.vercel.app/" loading="lazy" title="AHWSuper live platform"></iframe>
+      <iframe class="live-embed" data-src="https://business-cird4ht67-ahwdds-projects.vercel.app/" loading="lazy" title="AHWSuper live platform"></iframe>
     </div>
     <p class="live-fallback">Live prototype embedded above &middot; if it doesn't load, <a href="https://business-cird4ht67-ahwdds-projects.vercel.app/" target="_blank" rel="noopener">open it in a new tab</a>.</p>
   </section>
@@ -814,7 +753,10 @@
       c.classList.remove('side-left','side-right','side-center');c.classList.add('side-'+capSide);
       const delay=(showIt&&capLate)?'.45s':'';c.style.transitionDelay=delay;c.style.animationDelay=delay;
       c.classList.toggle('show',showIt);});
-    document.querySelectorAll('.slide').forEach(s=>s.classList.toggle('active',isSlide&&s.dataset.slide===sc.slide));
+    document.querySelectorAll('.slide').forEach(s=>{
+      const on=isSlide&&s.dataset.slide===sc.slide;s.classList.toggle('active',on);
+      if(on)s.querySelectorAll('iframe[data-src]').forEach(f=>{f.src=f.dataset.src;f.removeAttribute('data-src');});
+    });
     [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===scene));
     counter.textContent=String(scene+1).padStart(2,'0')+' / '+TOTAL;
     hint.style.opacity=scene===0?'.5':'0';prevShown=shown;wasBuilt=builtNow;
