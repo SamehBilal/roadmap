@@ -14,7 +14,7 @@
   const nav=document.createElement('div');
   nav.className='ahw-nav';
   nav.innerHTML=
-    '<a class="back" href="../roadmap.html">&larr; Deck</a>'+
+    '<a class="back" href="../index.html">&larr; Deck</a>'+
     '<span class="brand"><b>AHW</b>Super &middot; Connected Demos</span>'+
     '<div class="links">'+
       PAGES.map(p=>`<a href="${p.file}"${p.id===current?' class="on"':''}>${p.label}</a>`).join('')+
